@@ -32,8 +32,8 @@ type ChunkedAssociativeArray struct {
 func NewChunkedAssociativeArray(chunkSize int) *ChunkedAssociativeArray {
 	return &ChunkedAssociativeArray{
 		defaultChunkSize: chunkSize,
-		chunksCache:      deque.New[*AssociativeArrayChunk](ChunkedAssociativeArrayMaxCacheSize, ChunkedAssociativeArrayMaxCacheSize),
-		chunks:           deque.New[*AssociativeArrayChunk](),
+		chunksCache:      &deque.Deque[*AssociativeArrayChunk]{},
+		chunks:           &deque.Deque[*AssociativeArrayChunk]{},
 	}
 }
 
